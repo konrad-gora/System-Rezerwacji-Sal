@@ -1,0 +1,17 @@
+System ma:
+- byc uniwersalny
+- 2 poziomy logowania:
+
+- kreator dla administratora
+- rezerwacja dla uzytkownika
+
+- Kreator administratora:
+- okreslanie lokalu
+- tworzenie sal
+- sposoby rezerwacji
+- sprawdzanie podpietych uzytkownikow/ usuwanie ich
+- domyslna konfiguracja
+- rezerwacja dla uzytkownika
+- rezerwacje cykliczne
+- rezerwacje jednorazowe
+- sprawdzanie zajetosci/typow sal/rozmiarow sal itp
