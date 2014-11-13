@@ -2,3 +2,5 @@ Plik zawiera nasze ¿ale, to co mamy zrobiæ, czego brakuje itp.
 
 1. Przypadki u¿ycia trzeba zrobiæ do œrody 12.11.2014
  -zrobilem logowanie.
+
+2. Testuje czy dzia³a - bartek
