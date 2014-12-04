@@ -1,0 +1,17 @@
+Grudzieñ 
+	Diagram klas
+	
+Styczeñ
+	Stworzenie GUI 
+	
+Luty
+	Implementacja 
+
+Marzec
+	Implementacja
+	Pod³¹czenie systemu do bazy danych
+
+Kwiecieñ
+	Poprawki
+Maj
+	Refaktoryzacja
