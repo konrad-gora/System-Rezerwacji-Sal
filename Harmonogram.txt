@@ -1,5 +1,13 @@
-Grudzieñ 
+PaŸdziernik
+	Inicjacja repo
+	dodanie wymagañ
+
+Listopad
+	Przypadki u¿ycia
 	Diagram klas
+
+Grudzieñ 
+	prototyp
 	
 Styczeñ
 	Stworzenie GUI 
