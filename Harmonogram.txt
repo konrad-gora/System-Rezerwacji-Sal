@@ -1,15 +1,17 @@
-Paüdziernik
+Pa≈∫dziernik
 	Inicjacja repo
-	dodanie wymagaÒ
+	dodanie wymaga≈Ñ
 
 Listopad
-	Przypadki uøycia
+	Przypadki u≈ºycia
 	Diagram klas
-
-GrudzieÒ 
 	prototyp
+
+Grudzie≈Ñ 
+	przygotowania do ≈õwiƒÖt
+	ubieranie choinki
 	
-StyczeÒ
+Stycze≈Ñ
 	Stworzenie GUI 
 	
 Luty
@@ -17,9 +19,9 @@ Luty
 
 Marzec
 	Implementacja
-	Pod≥πczenie systemu do bazy danych
+	Pod≈ÇƒÖczenie systemu do bazy danych
 
-KwiecieÒ
+Kwiecie≈Ñ
 	Poprawki
 Maj
 	Refaktoryzacja
