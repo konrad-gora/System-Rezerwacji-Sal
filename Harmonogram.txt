@@ -10,9 +10,10 @@ Listopad
 Grudzień 
 	przygotowania do świąt
 	ubieranie choinki
+	Tworzenie GUI
 	
 Styczeń
-	Stworzenie GUI 
+	Stworzenie GUI
 	
 Luty
 	Implementacja 
