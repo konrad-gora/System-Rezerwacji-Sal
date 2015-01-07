@@ -7,16 +7,14 @@ Listopad
 	Diagram klas
 	prototyp
 
-Grudzień 
-	przygotowania do świąt
-	ubieranie choinki
+Grudzień
 	Tworzenie GUI
 	
 Styczeń
-	Stworzenie GUI
+	Stworzenie bazy danych
 	
 Luty
-	Implementacja 
+	Implementacja Logiki
 
 Marzec
 	Implementacja
@@ -24,5 +22,6 @@ Marzec
 
 Kwiecień
 	Poprawki
+	
 Maj
 	Refaktoryzacja
