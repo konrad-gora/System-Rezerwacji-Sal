@@ -1,6 +1,7 @@
 body {
-    margin-left: 50px;
-    margin-top:  10px;
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 #menu h1{
@@ -63,12 +64,13 @@ body {
 
 #tresc {
     width: auto;
+
 }
 
 #loginPanel {
     position: absolute;
     top: 80%;
-    left: 80%;
+    left: 70%;
 }
 
 #loginPanel a {
