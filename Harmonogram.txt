@@ -1,4 +1,4 @@
-Październik
+﻿Październik
 	Inicjacja repo
 	dodanie wymagań
 
@@ -11,6 +11,7 @@ Grudzień
 	Tworzenie GUI
 	
 Styczeń
+	Tworzenie GUI - nadrabianie zaległości
 	Stworzenie bazy danych
 	
 Luty
