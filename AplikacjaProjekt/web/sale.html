@@ -35,17 +35,17 @@
     </ul>
 </div>
 <div id="tresc">
-    <div ng-controller="UzytkownicyCtrl">
+    <div ng-controller="SaleCtrl">
         <table>
             <tr>
-                <td><h2>Imie:</h2></td>
-                <td><h2>Nazwisko:</h2></td>
-                <td><h2>Email:</h2></td>
+                <td><h2>Nazwa:</h2></td>
+                <td><h2>Pojemnosc:</h2></td>
+                <td><h2>Opis:</h2></td>
             </tr>
-            <tr ng-repeat="user in uzytkownicy.cast">
-            <td>{{user.imie}}</td>
-            <td>{{user.nazwisko}}</td>
-            <td>{{user.email}}</td>
+            <tr ng-repeat="sala in sale.cast">
+                <td>{{sala.nazwa}}</td>
+                <td>{{sala.pojemnosc}}</td>
+                <td>{{sala.opis}}</td>
             </tr>
         </table>
     </div>
@@ -54,6 +54,6 @@
     Stopka
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
-<script type="text/javascript" src="js/usersExample.js"></script>
+<script type="text/javascript" src="js/saleExample.js"></script>
 </body>
 </html>
