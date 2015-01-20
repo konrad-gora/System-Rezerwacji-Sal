@@ -15,7 +15,7 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class User {
     
-    String imie, nazwisko, mail, password, haslo, pesel, login;
+    String imie, nazwisko, mail, password, pesel, login;
     
     public User() {
     } 
@@ -77,14 +77,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getHaslo() {
-        return haslo;
-    }
-
-    public void setHaslo(String haslo) {
-        this.haslo = haslo;
     }
 
     public String getPesel() {
