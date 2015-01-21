@@ -91,8 +91,18 @@ public class UserBean {
     public void setCzyZalogowany(boolean czyZalogowany) {
         this.czyZalogowany = czyZalogowany;
     }
-    
+   
     public boolean loginExsists(){
+        ArrayList al = db.getUsers();
+        for(int i = 0; i<al.size(); i++){
+            User sprawdzany = (User) al.get(i);
+            if(login.equals(sprawdzany.login))
+                return true;
+        }
+        return false;
+    }
+    
+    public boolean loginPassExsists(){
         ArrayList al = db.getUsers();
         for(int i = 0; i<al.size(); i++){
             User sprawdzany = (User) al.get(i);
@@ -104,7 +114,7 @@ public class UserBean {
     
     public String goSomewhere(){
 
-       if(loginExsists()){
+       if(loginPassExsists()){
            czyZalogowany=true;
            if(login.equals("admin")){
                return "panelAdmina.xhtml";
@@ -113,6 +123,16 @@ public class UserBean {
        }else{
            return "blad.xhtml";
        }
+    }
+    
+    public String register()
+    {
+        if (loginExsists())
+            return "blad.xhtml";
+        ArrayList uzytkownicy = db.getUsers();
+        uzytkownicy.add(new User(imie, nazwisko, mail, password, pesel, login));
+        
+        return "Potwierdzenie.xhtml";
     }
     
     public String getJakDzialaAjax(){
