@@ -16,6 +16,7 @@ import javax.faces.bean.SessionScoped;
 public class UserBean {
     
     String imie, nazwisko, mail, password, pesel, login;
+    String passwordValid;
     DB db = new DB();
     boolean czyZalogowany=false;
     
@@ -83,6 +84,14 @@ public class UserBean {
     public void setLogin(String login) {
         this.login = login;
     }
+
+    public String getPasswordValid() {
+        return passwordValid;
+    }
+
+    public void setPasswordValid(String passwordValid) {
+        this.passwordValid = passwordValid;
+    }
     
     public boolean isCzyZalogowany() {
         return czyZalogowany;
@@ -93,20 +102,20 @@ public class UserBean {
     }
    
     public boolean loginExsists(){
-        ArrayList al = db.getUsers();
+        ArrayList al = this.db.getUsers();
         for(int i = 0; i<al.size(); i++){
             User sprawdzany = (User) al.get(i);
-            if(login.equals(sprawdzany.login))
+            if(this.login.equals(sprawdzany.login))
                 return true;
         }
         return false;
     }
     
     public boolean loginPassExsists(){
-        ArrayList al = db.getUsers();
+        ArrayList al = this.db.getUsers();
         for(int i = 0; i<al.size(); i++){
             User sprawdzany = (User) al.get(i);
-            if(login.equals(sprawdzany.login) && password.equals(sprawdzany.password))
+            if(this.login.equals(sprawdzany.login) && this.password.equals(sprawdzany.password))
                 return true;
         }
         return false;
@@ -115,7 +124,7 @@ public class UserBean {
     public String goSomewhere(){
 
        if(loginPassExsists()){
-           czyZalogowany=true;
+           this.czyZalogowany=true;
            if(login.equals("admin")){
                return "panelAdmina.xhtml";
            }else
@@ -125,14 +134,24 @@ public class UserBean {
        }
     }
     
-    public String register()
-    {
+    public String register(){
         if (loginExsists())
             return "blad.xhtml";
         ArrayList uzytkownicy = db.getUsers();
-        uzytkownicy.add(new User(imie, nazwisko, mail, password, pesel, login));
+        uzytkownicy.add(new User(this.imie, this.nazwisko, this.mail, this.password, this.pesel, this.login));
         
         return "Potwierdzenie.xhtml";
+    }
+    
+    public String wyloguj(){
+        this.czyZalogowany=false;
+        this.imie="";
+        this.nazwisko="";
+        this.mail="";
+        this.pesel="";
+        this.login="";
+        this.passwordValid="";
+        return "oNas.xhtml";
     }
     
     public String getJakDzialaAjax(){
