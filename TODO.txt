@@ -4,3 +4,9 @@ Plik zawiera nasze ¿ale, to co mamy zrobiæ, czego brakuje itp.
  -zrobilem logowanie.
 
 2. Testuje czy dzia³a - bartek
+
+3. Logowanie, zmienna bool ca³y czas false, jeœli usun¹æ modyfikacje jej podczas wylogowywanie to dzia³a
+
+4. postawienie bazy danych.
+
+5. przygotowaæ listy u¿ytkowników, sal, oraz rezerwowanie sal

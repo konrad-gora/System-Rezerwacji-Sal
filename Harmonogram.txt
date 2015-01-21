@@ -10,7 +10,7 @@ Listopad
 Grudzień
 	Tworzenie GUI
 	
-Styczeń
+Styczeń - kończy się 4.02  o 16:30 202
 	Tworzenie GUI - nadrabianie zaległości
 	Stworzenie bazy danych
 	
