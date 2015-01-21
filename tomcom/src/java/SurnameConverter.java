@@ -41,7 +41,7 @@ public class SurnameConverter implements Converter {
         }
 
         //URLObject urlobj = new URLObject(url.toString());
-        User user = new User(name, false);
+        UserBean user = new UserBean(name, false);
         
         //return urlobj;
         return user.getNazwisko();

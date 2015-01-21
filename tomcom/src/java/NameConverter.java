@@ -41,7 +41,7 @@ public class NameConverter implements Converter {
         }
 
         //URLObject urlobj = new URLObject(url.toString());
-        User user = new User(name , true);
+        UserBean user = new UserBean(name , true);
         
         //return urlobj;
         return user.getImie();

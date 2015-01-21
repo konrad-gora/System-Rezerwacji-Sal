@@ -5,28 +5,28 @@
  */
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Mariusz
  */
 @ManagedBean(name="user")
-@RequestScoped
-public class User {
+@SessionScoped
+public class UserBean {
     
     String imie, nazwisko, mail, password, pesel, login;
+    DB db = new DB();
+    boolean czyZalogowany=false;
     
-    public User() {
-    } 
-    public User(String imie, boolean czyImie){
+    public UserBean() {}     
+    
+    public UserBean(String imie, boolean czyImie){
         if(czyImie)
             this.imie = imie;
         else
             this.nazwisko= imie;
     }
-
-    DB db = new DB();
 
     public DB getDb() {
         return db;
@@ -35,18 +35,9 @@ public class User {
     public void setDb(DB db) {
         this.db = db;
     }
-    
-    
+
     public String getImie() {
         return imie;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public void setImie(String imie) {
@@ -60,8 +51,6 @@ public class User {
     public void setNazwisko(String nazwisko) {
         this.nazwisko = nazwisko;
     }
-
-
 
     public String getMail() {
         return mail;
@@ -86,26 +75,43 @@ public class User {
     public void setPesel(String pesel) {
         this.pesel = pesel;
     }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    
+    public boolean isCzyZalogowany() {
+        return czyZalogowany;
+    }
+
+    public void setCzyZalogowany(boolean czyZalogowany) {
+        this.czyZalogowany = czyZalogowany;
+    }
     
     public boolean loginExsists(){
         ArrayList al = db.getUsers();
         for(int i = 0; i<al.size(); i++){
-            if(login.equals(al.get(i)))
+            User sprawdzany = (User) al.get(i);
+            if(login.equals(sprawdzany.login) && password.equals(sprawdzany.password))
                 return true;
         }
         return false;
     }
     
-
     public String goSomewhere(){
 
        if(loginExsists()){
+           czyZalogowany=true;
            if(login.equals("admin")){
                return "panelAdmina.xhtml";
            }else
                return "poZalogowaniu.xhtml";
        }else{
-                return "poZalogowaniu.xhtml";
+           return "blad.xhtml";
        }
     }
     

@@ -14,13 +14,14 @@ public class DB {
     ArrayList users = new ArrayList<>();
     
     public DB(){
-        users.add("admin");
-        users.add("ktos");
+        users.add(new User ("imie", "nazwisko", "mail", "password", "pesel", "login"));
+        users.add(new User ("Wieslaw", "Sztacheta", "sztacheta@plot.pl", "admin1", "01010155555", "admin"));
+        //users.add("admin");
+        //users.add("ktos");
         
     }
 
     public ArrayList getUsers() {
-       
         return users;
     }
 
