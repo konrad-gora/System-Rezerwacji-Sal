@@ -1,4 +1,9 @@
-
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /*
@@ -11,21 +16,54 @@ import java.util.ArrayList;
  * @author student
  */
 public class DB {
-    ArrayList users = new ArrayList<>();
-    
-    public DB(){
-        users.add(new User ("imie", "nazwisko", "mail", "password", "pesel", "login"));
-        users.add(new User ("Wieslaw", "Sztacheta", "sztacheta@plot.pl", "admin1", "01010155555", "admin"));
-        //users.add("admin");
-        //users.add("ktos");
-        
+
+    private static String tableName = "uzytkownicy";
+    // jdbc Connection
+    private static Connection conn = null;
+    private static Statement stmt = null;
+
+    public static void createConnection() {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found " + e);
+        }
+        try {
+            DriverManager.registerDriver(new org.apache.derby.jdbc.EmbeddedDriver());
+            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/systemRezerwacjiDB", "root", "toor");
+        } catch (SQLException e) {
+            System.out.println("SQL exception occured" + e);
+        }
     }
 
-    public ArrayList getUsers() {
-        return users;
+    public static void insertUsers(String login, String imie, String nazwisko, String password, String mail, String pesel) {
+        try {
+            if (conn != null) {
+                stmt = conn.createStatement();
+            }
+            if (stmt != null) {
+                stmt.execute("insert into " + tableName + " (login, imie, nazwisko, haslo, email, pesel) values ('"
+                        + login + "','" + imie + "','" + nazwisko + "','" + password + "','"
+                        + mail + "','" + pesel + "')");
+                stmt.close();
+            }
+        } catch (SQLException sqlExcept) {
+            sqlExcept.printStackTrace();
+        }
     }
 
-    public void setUsers(ArrayList users) {
-        this.users = users;
+    public static void shutdown() {
+        try {
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (conn != null) {
+                DriverManager.getConnection("jdbc:derby://localhost:1527/systemRezerwacjiDB" + ";shutdown=true");
+                conn.close();
+            }
+        } catch (SQLException sqlExcept) {
+
+        }
+
     }
 }
