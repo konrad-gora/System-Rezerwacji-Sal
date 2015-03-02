@@ -1,10 +1,12 @@
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,9 +20,12 @@ import java.util.ArrayList;
 public class DB {
 
     private static String tableName = "uzytkownicy";
-    // jdbc Connection
     private static Connection conn = null;
     private static Statement stmt = null;
+    public static String driver = "org.apache.derby.jdbc.ClientDriver";
+   public static String username = "root";
+   public static String password = "toor";
+   public static String url = "jdbc:derby://localhost:1527/systemRezerwacjiDB";
 
     public static void createConnection() {
         try {
@@ -51,6 +56,31 @@ public class DB {
             sqlExcept.printStackTrace();
         }
     }
+    
+    public List<Sala> listaSal(String sql) throws SQLException{
+        
+        takeDriver();
+        connect();
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        ResultSet result = preparedStatement.executeQuery();
+        List<Sala> sale = new ArrayList<Sala>();
+                
+                while(result.next()){
+                    Sala sala = new Sala();
+                    
+                    sala.setId(result.getInt("id"));
+                    sala.setIlosc_miejsc(result.getInt("ilosc_miejsc"));
+                    sala.setLokalizacja(result.getString("lokalizacja"));
+                    sala.setNazwa(result.getString("nazwa"));
+                    sala.setNumer_sali(result.getInt("numer_sali"));
+                    sala.setTyp(result.getString("typ"));
+                    
+                    sale.add(sala);
+                }
+          
+        return sale;
+    }
+    
 
     public static void shutdown() {
         try {
@@ -65,5 +95,18 @@ public class DB {
 
         }
 
+    }
+
+    private void takeDriver(){
+        try{
+            Class.forName(driver);
+        }catch(java.lang.ClassNotFoundException e){
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    private void connect() throws SQLException {
+        conn = DriverManager.getConnection(url, username, password);
+        stmt = conn.createStatement();
     }
 }
