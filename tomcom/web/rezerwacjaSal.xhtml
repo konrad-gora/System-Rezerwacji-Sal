@@ -26,24 +26,39 @@
                      >
                     <h:column>
                         <f:facet name="header">
-                            ID
+                            Lokalizacja
                         </f:facet>
-                            #{item.id}
+                            #{item.lokalizacja}
                     </h:column>
-
+                        
                     <h:column>
                         <f:facet name="header">
                             Nazwa
                         </f:facet>
                             #{item.nazwa}
                     </h:column>
+                        
+                    <h:column>
+                        <f:facet name="header">
+                            Numer sali
+                        </f:facet>
+                            #{item.numer_sali}
+                    </h:column>       
 
                     <h:column>
                         <f:facet name="header">
                             Typ 
                         </f:facet>
                             #{item.typ}
-                    </h:column> 
+                    </h:column>
+                        
+                    <h:column>
+                        <f:facet name="header">
+                            Ilość miejsc
+                        </f:facet>
+                            #{item.ilosc_miejsc}
+                    </h:column>   
+                        
                     <h:column>
                         <f:facet name="header">Wybierz salę</f:facet>
                         <h:commandButton value="Rezerwuj" action="#{rezerwacjaSalBean.przypiszSaleDoUzytkownika(item)}" />
