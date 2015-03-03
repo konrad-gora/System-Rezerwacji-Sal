@@ -37,4 +37,10 @@ public class rezerwacjaSalBean {
         String sql = "insert into rezerwacje values (2, " + sala.getId() + ")";
         dbConnection.exectueQuery(sql);
     }
+    
+    public String personalizacjaRezerwacjiSali(Sala sala){
+        
+        
+        return "rezerwacjaSalPersonalizacja.xhtml";
+    }
 }
