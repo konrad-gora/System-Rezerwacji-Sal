@@ -81,6 +81,13 @@ public class DB {
         return sale;
     }
     
+    public void exectueQuery(String sql) throws SQLException{
+        takeDriver();
+        connect();
+        stmt.executeUpdate(sql);
+        close();
+        
+    }
 
     public static void shutdown() {
         try {
@@ -109,4 +116,9 @@ public class DB {
         conn = DriverManager.getConnection(url, username, password);
         stmt = conn.createStatement();
     }
+    
+    private void close() throws SQLException{
+        stmt.close();
+        conn.close();
+    } 
 }

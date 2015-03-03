@@ -31,4 +31,10 @@ public class rezerwacjaSalBean {
         listaSal = dbConnection.listaSal("select * from sale");
         return listaSal;
     }
+    
+    public void przypiszSaleDoUzytkownika(Sala sala) throws SQLException{
+        //TODO zamiast 2 brac id uzytkownika zalogowanego
+        String sql = "insert into rezerwacje values (2, " + sala.getId() + ")";
+        dbConnection.exectueQuery(sql);
+    }
 }
