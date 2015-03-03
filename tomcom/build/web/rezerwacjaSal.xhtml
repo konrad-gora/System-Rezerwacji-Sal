@@ -60,8 +60,13 @@
                     </h:column>   
                         
                     <h:column>
-                        <f:facet name="header">Wybierz salę</f:facet>
+                        <f:facet name="header">Przypisz salę do uzytkownika</f:facet>
                         <h:commandButton value="Rezerwuj" action="#{rezerwacjaSalBean.przypiszSaleDoUzytkownika(item)}" />
+                    </h:column>
+                        
+                    <h:column>
+                        <f:facet name="header">Wybierz salę</f:facet>
+                        <h:commandButton value="Rezerwuj" action="rezerwacjaSalPersonalizacja.xhtml" />
                     </h:column>
                 </h:dataTable>
                 </h:form>
