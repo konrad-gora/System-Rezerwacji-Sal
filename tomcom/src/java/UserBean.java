@@ -129,6 +129,17 @@ public class UserBean {
 //           return "blad.xhtml";
 //       }
 //    }
+    public String zaloguj() {
+        DB dbConnection = new DB();
+        
+        if (dbConnection.sreachUsers(login, password)) {
+            this.czyZalogowany = true;
+            return "poZalogowaniu.xhtml";
+        } 
+        //jesli nie to:
+        return "Zaloguj.xhtml";           
+    }
+    
     public String register() {
         DB dbConnection = new DB();
         dbConnection.createConnection();

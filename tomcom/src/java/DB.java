@@ -1,3 +1,4 @@
+
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,9 +24,9 @@ public class DB {
     private static Connection conn = null;
     private static Statement stmt = null;
     public static String driver = "org.apache.derby.jdbc.ClientDriver";
-   public static String username = "root";
-   public static String password = "toor";
-   public static String url = "jdbc:derby://localhost:1527/systemRezerwacjiDB";
+    public static String username = "root";
+    public static String password = "toor";
+    public static String url = "jdbc:derby://localhost:1527/systemRezerwacjiDB";
 
     public static void createConnection() {
         try {
@@ -56,37 +57,57 @@ public class DB {
             sqlExcept.printStackTrace();
         }
     }
-    
-    public List<Sala> listaSal(String sql) throws SQLException{
-        
+
+    public boolean sreachUsers(String login, String haslo) {
+        try {
+            takeDriver();
+            connect();
+            PreparedStatement preparedStatement = 
+                    conn.prepareStatement("select * from uzytkownicy");
+                    //conn.prepareStatement("SELECT '" +login+ "' as login, '" +haslo+ "' from uzytkownicy");
+            ResultSet result = preparedStatement.executeQuery();
+            while (result.next()) {
+                String resultLogin = result.getString("login");
+                String resultHaslo = result.getString("haslo");
+                if (login.equals(resultLogin) && haslo.equals(resultHaslo))
+                    return true; //jesli sie pokrywa to mozna zalogowac
+            }
+        } catch (SQLException sqlExcept) {
+            sqlExcept.printStackTrace();
+        }
+        return false; //nie znaleziono pasujacego uzytkownika
+    }
+
+    public List<Sala> listaSal(String sql) throws SQLException {
+
         takeDriver();
         connect();
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         ResultSet result = preparedStatement.executeQuery();
         List<Sala> sale = new ArrayList<Sala>();
-                
-                while(result.next()){
-                    Sala sala = new Sala();
-                    
-                    sala.setId(result.getInt("id"));
-                    sala.setIlosc_miejsc(result.getInt("ilosc_miejsc"));
-                    sala.setLokalizacja(result.getString("lokalizacja"));
-                    sala.setNazwa(result.getString("nazwa"));
-                    sala.setNumer_sali(result.getInt("numer_sali"));
-                    sala.setTyp(result.getString("typ"));
-                    
-                    sale.add(sala);
-                }
-          
+
+        while (result.next()) {
+            Sala sala = new Sala();
+
+            sala.setId(result.getInt("id"));
+            sala.setIlosc_miejsc(result.getInt("ilosc_miejsc"));
+            sala.setLokalizacja(result.getString("lokalizacja"));
+            sala.setNazwa(result.getString("nazwa"));
+            sala.setNumer_sali(result.getInt("numer_sali"));
+            sala.setTyp(result.getString("typ"));
+
+            sale.add(sala);
+        }
+
         return sale;
     }
-    
-    public void exectueQuery(String sql) throws SQLException{
+
+    public void exectueQuery(String sql) throws SQLException {
         takeDriver();
         connect();
         stmt.executeUpdate(sql);
         close();
-        
+
     }
 
     public static void shutdown() {
@@ -104,21 +125,21 @@ public class DB {
 
     }
 
-    private void takeDriver(){
-        try{
+    private void takeDriver() {
+        try {
             Class.forName(driver);
-        }catch(java.lang.ClassNotFoundException e){
+        } catch (java.lang.ClassNotFoundException e) {
             System.err.println(e.getMessage());
         }
     }
-    
+
     private void connect() throws SQLException {
         conn = DriverManager.getConnection(url, username, password);
         stmt = conn.createStatement();
     }
-    
-    private void close() throws SQLException{
+
+    private void close() throws SQLException {
         stmt.close();
         conn.close();
-    } 
+    }
 }
