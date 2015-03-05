@@ -1,61 +1,118 @@
-
-#top {
-    position: relative;
-    background-color: #036fab;
-    color: white;
-    padding: 5px;
-    margin: 0px 0px 10px 0px;
+body{
+    background-color: #404040;
 }
+#logo {
+    
+   
+    color: white;
+    margin-top: 20px;
+    font-size: 44px;
+    letter-spacing: 3px;
+    font-weight: 900;
+    
+}
+.container{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#topbar{
+    background-color: #303030;
+    
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    height: 170px;
+    
+}
+#topbarL{
+    float: left;
+    padding: 20px;
+    width: 138px;
+    height: 125px;
+    text-align: center;
+    border-right: 2px dotted #cccccc
+}
+#topbarR{
+    float:left;
+    padding: 20px;
+    width: 760px;
+    font-size: 16px;
+    text-align: justify;
+}
+
+
+#menu {
+    
+   background-color: #f36742;
+    margin-top: 20px;
+    color: #ffffff;
+    padding: 10px;
+    
+}
+
+.option{
+    float: left;
+    min-width: 50px;
+    height: 25px;
+    font-size: 18px;
+    padding: 10px;
+    border-right: 2px dotted #444444;
+    opacity: 0.8;
+}
+
+.option:hover{
+    background-color: #000000;
+    cursor: pointer;
+}
+#sidebar{
+    float: left;
+    width: 148px;
+    min-height: 620px;
+    padding: 20px;
+    background-color: lightgray;
+    text-align: center;
+    font-size: 18px;
+    border-right: 2px dotted #666666;
+}
+
+#content {
+    
+    float: left;
+    padding: 40px;
+    width: 730px;
+    background-color: #dedede;
+    min-height: 580px;
+    text-align: justify;
+        
+}
+
 
 #bottom {
-    position: relative;
-    background-color: transparent;
-    padding: 5px;
-    margin: 10px 0px 0px 0px;
+   clear:both;
+   color: white;
+   text-align: center;
+   padding: 20px;
+   font-size: 18px;
 }
 
-#left {
-    float: left;
-    background-color: #ece3a5;
-    padding: 5px;
-    width: 150px;
+.optionL{
+    font-size: 18px;
+    height: 25px;
+    padding: 10px;
+    border-bottom: 2px dotted #444444;
+}
+.optionL:hover{
+    background-color: #f36742;
+    color: white;
+    cursor: pointer;
 }
 
-#right {
-    float: right;
-    background-color: #ece3a5;
-    padding: 5px;
-    width: 150px;
+.bigtitle{
+    font-size:32px;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
-
-.center_content {
-    position: relative;
-    background-color: #dddddd;
-    padding: 5px;
-}
-
-.left_content {
-    background-color: #dddddd;
-    padding: 5px;
-    margin-left: 170px;
-}
-
-.right_content {
-    background-color: #dddddd;
-    padding: 5px;
-    margin: 0px 170px 0px 170px;
-}
-
-#top a:link, #top a:visited {
-  color: white;
-  font-weight : bold;
-  text-decoration: none;
-}
-
-#top a:link:hover, #top a:visited:hover  {
-  color: black;
-  font-weight : bold;
-  text-decoration : underline;
-}
-
-

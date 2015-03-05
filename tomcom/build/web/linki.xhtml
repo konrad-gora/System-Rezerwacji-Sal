@@ -10,32 +10,31 @@
     <h:body>
        <ui:composition>
            
-            <h:form>
-                <h:panelGrid columns="1">
-                    <h:commandLink>
-                        <h:link value="O nas" outcome="oNas.xhtml"></h:link>          
-                        <br/>
+            
+                
+                        <div class="option"><h:link value="O nas" outcome="oNas.xhtml"></h:link></div>          
+                        
                         <c:if test="#{user.czyNieZalogowany()}">
-                            <h:link value="Zaloguj" outcome="Zaloguj.xhtml" ></h:link>
-                            <br/>
-                            <h:link value="Zarejestruj" outcome="Rejestracja.xhtml" ></h:link>
-                            <br/>
+                            <div class="option"><h:link value="Zaloguj" outcome="Zaloguj.xhtml" ></h:link></div>
+                           
+                              <div class="option"><h:link value="Zarejestruj" outcome="Rejestracja.xhtml" ></h:link></div>
+                            
                         </c:if>
                         <c:if test="#{user.czyZalogowany}">
-                            <h:link value="Wyloguj" outcome="wyloguj.xhtml" ></h:link>
-                            <br/>
-                            <h:link value="Użytkownicy" outcome="uzytkownicy.xhtml"></h:link>
-                            <br/>
+                              <div class="option"><h:link value="Wyloguj" outcome="wyloguj.xhtml" ></h:link></div>
+                           
+                              <div class="option"><h:link value="Lista sal" outcome="listaSal.xhtml"></h:link></div>
+                            
                             <c:if test="#{user.czyAdmin()}">
-                                <h:link value="Panel Administracyjny" outcome="welcomeJSF.jsp"></h:link>
-                                <br/>
+                                  <div class="option"><h:link value="Panel Admina" outcome="welcomeJSF.jsp"></h:link></div>
+                               
                             </c:if>
-                            <h:link value="Zarezerwuj sale" outcome="rezerwacjaSal.xhtml"></h:link>
-                            <br/>
+                             <div class="option"> <h:link value="Zarezerwuj sale" outcome="rezerwacjaSal.xhtml"></h:link></div>
+                         
                         </c:if>
-                    </h:commandLink>
-                </h:panelGrid>
-            </h:form>
+                        <div style="clear:both;"></div>
+                    
+           
         </ui:composition>
     </h:body>
 </html>

@@ -6,31 +6,46 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
+       
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <h:outputStylesheet name="./css/table-style.css" />
+        
         <title>Strona testowa</title>
     </h:head>
 
     <h:body>
-
-        <div id="top">
+        
+        <div class="container">
+        <div id="logo">
             <ui:insert name="top">
                 <ui:include src="header.xhtml"></ui:include>
             </ui:insert>    
-            <h:panelGroup>
-                <h:graphicImage value="/resources/images/dontforgettosmile.png" width="175"/>                   
-            </h:panelGroup>
+           
                    
         </div>
+            
+               
         <div>
-            <div id="left">
-                <ui:insert name="left">
+            <div id="menu">
+               
                     <ui:include src="linki.xhtml">
                     </ui:include>
-                </ui:insert>
+               
             </div>
-            <div id="content" class="left_content">
+            <div id="topbar">
+                <div id="topbarL"><h:graphicImage value="/resources/images/dontforgettosmile.png" height="140"/></div>
+                <div id="topbarR">
+                    <span class="bigtitle"> O projekcie kilka słów</span> <br/>
+                    System pozwala użytkownikowi w szybki sposób nie odchodząc od komputera dokonać rezerwacji! 
+                </div>
+                <div style ="clear:both;"></div>
+            </div>
+            <div id="sidebar">
+               
+                    <ui:include src="linki2.xhtml">
+                    </ui:include>
+               
+            </div>
+            <div id="content" class="content">
                 <ui:insert name="content">
                     <br></br><br></br>
                     
@@ -48,7 +63,7 @@
                 <ui:include src="footer.xhtml"></ui:include>
             </ui:insert>
         </div>
-
+            </div>
     </h:body>
 
 </html>

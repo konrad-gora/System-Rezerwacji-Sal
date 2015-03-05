@@ -12,27 +12,27 @@
            
             
                 
-                        <div class="option"><h:link value="O nas" outcome="oNas.xhtml"></h:link></div>          
+                        <div class="optionL"><h:link value="O nas" outcome="oNas.xhtml"></h:link></div>          
                         
                         <c:if test="#{user.czyNieZalogowany()}">
-                            <div class="option"><h:link value="Zaloguj" outcome="Zaloguj.xhtml" ></h:link></div>
+                            <div class="optionL"><h:link value="Zaloguj" outcome="Zaloguj.xhtml" ></h:link></div>
                            
-                              <div class="option"><h:link value="Zarejestruj" outcome="Rejestracja.xhtml" ></h:link></div>
+                              <div class="optionL"><h:link value="Zarejestruj" outcome="Rejestracja.xhtml" ></h:link></div>
                             
                         </c:if>
                         <c:if test="#{user.czyZalogowany}">
-                              <div class="option"><h:link value="Wyloguj" outcome="wyloguj.xhtml" ></h:link></div>
+                              <div class="optionL"><h:link value="Wyloguj" outcome="wyloguj.xhtml" ></h:link></div>
                            
-                              <div class="option"><h:link value="Lista sal" outcome="listaSal.xhtml"></h:link></div>
+                              <div class="optionL"><h:link value="Lista sal" outcome="listaSal.xhtml"></h:link></div>
                             
                             <c:if test="#{user.czyAdmin()}">
-                                  <div class="option"><h:link value="Panel Admina" outcome="welcomeJSF.jsp"></h:link></div>
+                                  <div class="optionL"><h:link value="Panel Admina" outcome="welcomeJSF.jsp"></h:link></div>
                                
                             </c:if>
-                             <div class="option"> <h:link value="Zarezerwuj sale" outcome="rezerwacjaSal.xhtml"></h:link></div>
+                             <div class="optionL"> <h:link value="Zarezerwuj sale" outcome="rezerwacjaSal.xhtml"></h:link></div>
                          
                         </c:if>
-                        <div style="clear:both;"></div>
+                        
                     
            
         </ui:composition>
