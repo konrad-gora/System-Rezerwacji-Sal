@@ -1,3 +1,4 @@
+
 CREATE TABLE uzytkownicy
 (
 ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
@@ -24,3 +25,30 @@ CREATE TABLE REZERWACJE
 user_id INT NOT NULL,
 sala_id INT NOT NULL
 ) ;
+
+CREATE TABLE REZERWACJA
+(
+ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
+idSali INT NOT NULL, 
+dataOD TIMESTAMP NOT NULL,
+dataDo TIMESTAMP NOT NULL,
+zarezerwowanePrzez INT NOT NULL, 
+FOREIGN KEY (zarezerwowanePrzez) REFERENCES uzytkownicy(ID),
+FOREIGN KEY (idSali) REFERENCES SALE(ID)
+);
+
+
+INSERT INTO uzytkownicy(login,imie,nazwisko,haslo,email,pesel)
+VALUES ('admin','My','Wszyscy','admin','admin@admin.com','9999999');
+
+INSERT INTO uzytkownicy(login,imie,nazwisko,haslo,email,pesel)
+VALUES ('uzytkownik','Jan','Kowalski','uzytkownik','uzytkownik@uzytkownik.com','3213132132');
+
+INSERT INTO SALE(nazwa,lokalizacja,numer_sali,ilosc_miejsc,typ)
+VALUES ('Sala wykladowa','UMCS INF','212',150,'wykladowa');
+
+INSERT INTO SALE(nazwa,lokalizacja,numer_sali,ilosc_miejsc,typ)
+VALUES ('Sala projekcyjna','UMCS HUMAN','11',230,'kinowa');
+
+INSERT INTO SALE(nazwa,lokalizacja,numer_sali,ilosc_miejsc,typ)
+VALUES ('Sala konferencyjna','UMCS FIZYKA','443',12,'biznesowa');
