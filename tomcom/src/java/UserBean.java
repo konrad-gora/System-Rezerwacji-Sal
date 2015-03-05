@@ -31,6 +31,19 @@ public class UserBean {
         }
     }
 
+    public boolean isCzyZalogowany() {
+        return czyZalogowany;
+    }
+
+    public boolean czyNieZalogowany() {
+        return !czyZalogowany;
+    }
+         
+    public boolean czyAdmin(){
+        if ("admin".equals(login) && this.czyZalogowany)
+            return true;
+        return false;
+    }
 //    public DB getDb() {
 //        return db;
 //    }

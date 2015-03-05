@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -12,20 +13,26 @@
             <h:form>
                 <h:panelGrid columns="1">
                     <h:commandLink>
-                        <h:link  value="O nas" outcome="oNas.xhtml"></h:link>          
+                        <h:link value="O nas" outcome="oNas.xhtml"></h:link>          
                         <br/>
-                        <h:link value="Wyloguj" outcome="#{user.wyloguj()}"></h:link>
-                        <br/>
-                        <h:link value="Zaloguj" outcome="Zaloguj.xhtml"></h:link>
-                        <br/>
-                        <h:link value="Zarejestruj" outcome="Rejestracja.xhtml"></h:link>
-                        <br/>
-                        <h:link value="Użytkownicy" outcome="uzytkownicy.xhtml"></h:link>
-                        <br/>
-                        <h:link value="Panel Administracyjny" outcome="welcomeJSF.jsp"></h:link>
-                        <br/>
-                        <h:link value="Zarezerwuj sale" outcome="rezerwacjaSal.xhtml"></h:link>
-                        <br/>
+                        <c:if test="#{user.czyNieZalogowany()}">
+                            <h:link value="Zaloguj" outcome="Zaloguj.xhtml" ></h:link>
+                            <br/>
+                            <h:link value="Zarejestruj" outcome="Rejestracja.xhtml" ></h:link>
+                            <br/>
+                        </c:if>
+                        <c:if test="#{user.czyZalogowany}">
+                            <h:link value="Wyloguj" outcome="#{user.wyloguj()}" ></h:link>
+                            <br/>
+                            <h:link value="Użytkownicy" outcome="uzytkownicy.xhtml"></h:link>
+                            <br/>
+                            <c:if test="#{user.czyAdmin()}">
+                                <h:link value="Panel Administracyjny" outcome="welcomeJSF.jsp"></h:link>
+                                <br/>
+                            </c:if>
+                            <h:link value="Zarezerwuj sale" outcome="rezerwacjaSal.xhtml"></h:link>
+                            <br/>
+                        </c:if>
                     </h:commandLink>
                 </h:panelGrid>
             </h:form>
