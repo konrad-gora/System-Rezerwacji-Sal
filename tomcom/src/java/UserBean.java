@@ -40,9 +40,7 @@ public class UserBean {
     }
          
     public boolean czyAdmin(){
-        if ("admin".equals(login) && this.czyZalogowany)
-            return true;
-        return false;
+        return "admin".equals(login) && this.czyZalogowany;
     }
 //    public DB getDb() {
 //        return db;
@@ -161,7 +159,7 @@ public class UserBean {
         return "poZalogowaniu";
     }
 
-    public String wyloguj() {
+    public String wyloguj() { 
         this.czyZalogowany = false;
         this.imie = "";
         this.nazwisko = "";
@@ -169,7 +167,8 @@ public class UserBean {
         this.pesel = "";
         this.login = "";
         this.passwordValid = "";
-        return "oNas.xhtml";
+        //return "oNas.xhtml";
+        return ""; //jesli to ma być wywoływane bez warunkowo na nowej stronie to zmienić na void
     }
 
     public String getJakDzialaAjax() {
