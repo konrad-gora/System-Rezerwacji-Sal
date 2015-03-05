@@ -15,12 +15,19 @@ Styczeń - kończy się 4.02  o 16:30 202
 	Stworzenie bazy danych
 	
 Luty
-	Implementacja Logiki
+	Poprawa wygladu 
+	
+	Implementacja Logiki:
+	Dodanie do bazy tabel oraz ich modyfikacja w panelu administracyjnym
+	(autoryzacja(logowanie) uzytkownik/admin/niezalogowany, 
+	wstepna rezerwacja sal)
+	
 
 Marzec
-	Implementacja
-	Podłączenie systemu do bazy danych
-
+	Implementacja (100 % dzialajaca rezerwacja 
+	tworzenie obiektow,
+	graficzny kalendarz,
+	Modyfikacja rezewacji)
 Kwiecień
 	Poprawki
 	
