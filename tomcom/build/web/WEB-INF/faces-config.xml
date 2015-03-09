@@ -6,13 +6,7 @@
     <application>
         <el-resolver>src.util.JsfCrudELResolver</el-resolver>
     </application>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>welcome</from-outcome>
-            <to-view-id>/welcomeJSF.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+   
     <managed-bean>
         <managed-bean-name>uzytkownicy</managed-bean-name>
         <managed-bean-class>src.UzytkownicyController</managed-bean-class>
@@ -31,28 +25,28 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>uzytkownicy_create</from-outcome>
-            <to-view-id>/uzytkownicy/New.jsp</to-view-id>
+            <to-view-id>uzytkownicyNew.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>uzytkownicy_list</from-outcome>
-            <to-view-id>/uzytkownicy/List.jsp</to-view-id>
+            <to-view-id>uzytkownicyList.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>uzytkownicy_edit</from-outcome>
-            <to-view-id>/uzytkownicy/Edit.jsp</to-view-id>
+            <to-view-id>uzytkownicyEdit.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>uzytkownicy_detail</from-outcome>
-            <to-view-id>/uzytkownicy/Detail.jsp</to-view-id>
+            <to-view-id>uzytkownicyDetail.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <managed-bean>

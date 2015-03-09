@@ -1,23 +1,27 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
-<%@taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<f:view>
-    <html>
-        <head>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    
+        <h:head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <title>Editing Uzytkownicy</title>
+            <title>Listing Uzytkownicy Items</title>
             <link rel="stylesheet" type="text/css" href="/tomcom/faces/jsfcrud.css" />
-        </head>
-        <body>
-            <h:panelGroup id="messagePanel" layout="block">
+        </h:head>
+       <h:body>
+       <ui:composition template="szablon.xhtml">
+            
+            <ui:define name="content">
+                <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h1>Editing Uzytkownicy</h1>
+            <h1>New Uzytkownicy</h1>
             <h:form>
+                <h:inputHidden id="validateCreateField" validator="#{uzytkownicy.validateCreate}" value="value"/>
                 <h:panelGrid columns="2">
-                    <h:outputText value="Id:"/>
-                    <h:outputText value="#{uzytkownicy.uzytkownicy.id}" title="Id" />
                     <h:outputText value="Login:"/>
                     <h:inputText id="login" value="#{uzytkownicy.uzytkownicy.login}" title="Login" required="true" requiredMessage="The login field is required." />
                     <h:outputText value="Imie:"/>
@@ -33,21 +37,17 @@
 
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{uzytkownicy.edit}" value="Save">
-                    <f:param name="jsfcrud.currentUzytkownicy" value="#{jsfcrud_class['src.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][uzytkownicy.uzytkownicy][uzytkownicy.converter].jsfcrud_invoke}"/>
-                </h:commandLink>
+                <h:commandLink action="#{uzytkownicy.create}" value="Create"/>
                 <br />
-                <br />
-                <h:commandLink action="#{uzytkownicy.detailSetup}" value="Show" immediate="true">
-                    <f:param name="jsfcrud.currentUzytkownicy" value="#{jsfcrud_class['src.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][uzytkownicy.uzytkownicy][uzytkownicy.converter].jsfcrud_invoke}"/>
-                </h:commandLink>
                 <br />
                 <h:commandLink action="#{uzytkownicy.listSetup}" value="Show All Uzytkownicy Items" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink value="Index" action="welcome" immediate="true" />
+                
 
             </h:form>
-        </body>
-    </html>
-</f:view>
+         </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
