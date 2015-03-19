@@ -8,33 +8,29 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-       <ui:composition>
-           
-            
-                
-                        <div class="optionL"><h:link value="O nas" outcome="oNas.xhtml"></h:link></div>          
-                        
-                        <c:if test="#{user.czyNieZalogowany()}">
-                            <div class="optionL"><h:link value="Zaloguj" outcome="Zaloguj.xhtml" ></h:link></div>
-                           
-                              <div class="optionL"><h:link value="Zarejestruj" outcome="Rejestracja.xhtml" ></h:link></div>
-                            
-                        </c:if>
-                        <c:if test="#{user.czyZalogowany}">
-                              <div class="optionL"><h:link value="Wyloguj" outcome="wyloguj.xhtml" ></h:link></div>
-                           
-                              <div class="optionL"><h:link value="Lista sal" outcome="listaSal.xhtml"></h:link></div>
-                            
-                            <c:if test="#{user.czyAdmin()}">
-                                  <div class="optionL"><h:link value="Panel Admina" outcome="panelAdmina.xhtml"></h:link></div>
-                               
-                            </c:if>
-                             <div class="optionL"> <h:link value="Zarezerwuj sale" outcome="rezerwacjaSal.xhtml"></h:link></div>
-                         
-                        </c:if>
-                        
-                    
-           
+        <ui:composition>
+
+            <div class="optionL"><h:link value="O nas" outcome="oNas.xhtml"></h:link></div>          
+
+            <c:if test="#{user.czyNieZalogowany()}">
+                <div class="optionL"><h:link value="Zaloguj" outcome="Zaloguj.xhtml" ></h:link></div>
+
+                <div class="optionL"><h:link value="Zarejestruj" outcome="Rejestracja.xhtml" ></h:link></div>
+
+            </c:if>
+            <c:if test="#{user.czyZalogowany}">
+                <div class="optionL"><h:link value="Wyloguj" outcome="wyloguj.xhtml" ></h:link></div>
+
+                <div class="optionL"><h:link value="Lista sal" outcome="listaSal.xhtml"></h:link></div>
+
+                <c:if test="#{user.czyAdmin()}">
+                    <div class="optionL"><h:link value="Panel Admina" outcome="panelAdmina.xhtml"></h:link></div>
+
+                </c:if>
+                <div class="optionL"> <h:link value="Zarezerwuj sale" outcome="rezerwacjaSal.xhtml"></h:link></div>
+
+            </c:if>
+
         </ui:composition>
     </h:body>
 </html>
