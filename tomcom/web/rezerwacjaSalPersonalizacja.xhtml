@@ -24,9 +24,11 @@
     <h:panelGrid columns="2" cellpadding="5">
         
  
-        <p:outputLabel for="datetime" value="Datetime:" />
-        <p:calendar id="datetime" value="#{calendarView.date}" pattern="MM/dd/yyyy HH:mm:ss" />
- 
+        <p:outputLabel for="datetimeStart" value="Od:" />
+        <p:calendar id="datetimeStart" value="#{calendarView.dateStart}" pattern="MM/dd/yyyy HH:mm:ss" />
+        
+        <p:outputLabel for="datetimeEnd" value="Do:" />
+        <p:calendar id="datetimeEnd" value="#{calendarView.dateEnd}" pattern="MM/dd/yyyy HH:mm:ss" />
         
     </h:panelGrid>
  
@@ -36,11 +38,14 @@
         <p:panelGrid id="display" columns="2" columnClasses="label,value">
             
  
-            <h:outputText value="Datetime:" />
-            <h:outputText value="#{calendarView.date}">
+            <h:outputText value="Od:" />
+            <h:outputText value="#{calendarView.dateStart}">
                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
             </h:outputText>
- 
+            <h:outputText value="Do:" />
+            <h:outputText value="#{calendarView.dateEnd}">
+                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+            </h:outputText>
             
         </p:panelGrid>
     </p:dialog>

@@ -12,7 +12,8 @@ import org.primefaces.event.SelectEvent;
 @ManagedBean
 public class CalendarView {
          
-    private Date date;
+    private Date dateStart;
+    private Date dateEnd;
 
      
     public void onDateSelect(SelectEvent event) {
@@ -30,11 +31,19 @@ public class CalendarView {
  
     
  
-    public Date getDate() {
-        return date;
+    public Date getDateStart() {
+        return dateStart;
     }
  
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateStart(Date dateStart) {
+        this.dateStart = dateStart;
+    }
+    
+    public Date getDateEnd() {
+        return dateEnd;
+    }
+ 
+    public void setDateEnd(Date dateEnd) {
+        this.dateEnd = dateEnd;
     }
 }
