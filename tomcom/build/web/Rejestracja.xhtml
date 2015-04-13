@@ -38,25 +38,27 @@
                             <h:outputText value="Podaj hasło" />                   
                         </h:panelGroup>
 
-                        <h:inputSecret value="#{user.password}"/>
+                        <h:inputSecret value="#{user.password}" required="true"/>
                         
                         <h:panelGroup>
-                            <h:outputText value="Powtórz hasło"/>                   
+                            <h:outputText value="Powtórz hasło" />                   
                         </h:panelGroup>
 
-                        <h:inputSecret value="#{user.passwordValid}"/>
+                        <h:inputSecret value="#{user.passwordValid}" required="true"/>
 
                         <h:panelGroup>
-                            <h:outputText value="Adres E-mail"/>                   
+                            <h:outputText value="Adres E-mail" />                   
                         </h:panelGroup>
 
-                        <h:inputText value="#{user.mail}" />
+                        <h:inputText value="#{user.mail}" required="true">
+                            <f:validator validatorId="EmailValidator"/>
+                        </h:inputText>
 
                         <h:panelGroup>
                             <h:outputText value="PESEL"/>                   
                         </h:panelGroup>
 
-                        <h:inputText value="#{user.pesel}"/>
+                        <h:inputText value="#{user.pesel}" required="true"/>
 
                         <h:panelGroup>
                             <h:outputText value=""/>                   
