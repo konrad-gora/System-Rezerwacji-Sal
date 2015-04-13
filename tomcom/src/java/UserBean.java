@@ -156,6 +156,7 @@ public class UserBean {
         dbConnection.createConnection();
         dbConnection.insertUsers(login, imie, nazwisko, password, mail, pesel);
         dbConnection.shutdown();
+        this.czyZalogowany = true;
         return "poZalogowaniu";
     }
 

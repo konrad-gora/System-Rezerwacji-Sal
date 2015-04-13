@@ -24,11 +24,12 @@ Luty
 	
 
 Marzec
-	Implementacja (100 % dzialajaca rezerwacja 
+	Implementacja 
 	tworzenie obiektow,
 	graficzny kalendarz,
-	Modyfikacja rezewacji)
+	Modyfikacja rezewacji
 Kwiecień
+	dzialajaca rezerwacja
 	Poprawki
 	
 Maj
