@@ -58,7 +58,9 @@
                             <h:outputText value="PESEL"/>                   
                         </h:panelGroup>
 
-                        <h:inputText value="#{user.pesel}" required="true"/>
+                        <h:inputText value="#{user.pesel}" required="true">
+                            <f:validator validatorId="PeselValidator"/>
+                        </h:inputText>
 
                         <h:panelGroup>
                             <h:outputText value=""/>                   

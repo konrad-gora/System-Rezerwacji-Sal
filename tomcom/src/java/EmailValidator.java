@@ -5,16 +5,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
+/** @author Konrad*/
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Konrad
- */
 @FacesValidator(value = "EmailValidator")
 public class EmailValidator implements Validator {
 
@@ -34,7 +26,7 @@ public class EmailValidator implements Validator {
         FacesMessage msg = new FacesMessage("Niepoprawny adres email", "Niepoprawny adres email");
         msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 
-        if (adres.length() > 254) 
+        if (adres.length() > 254)
             throw new ValidatorException(msg);
         
         if (adres.charAt(0)=='_' || adres.charAt(0)=='.' || adres.charAt(0)=='-')
