@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    
+        
+       <h:body>
+       <ui:composition template="/szablon.xhtml">
+            
+            <ui:define name="content">
+                <c:if test="#{user.czyNieZalogowany()}">
+                    <meta content="0; URL=tylkoDlaZalogowanych.xhtml" http-equiv="refresh" />
+                </c:if>
+                <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUzytkownicyLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{uzytkownicyController.selected.id}" title="#{bundle.EditUzytkownicyTitle_id}" required="true" requiredMessage="#{bundle.EditUzytkownicyRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditUzytkownicyLabel_login}" for="login" />
+                    <h:inputText id="login" value="#{uzytkownicyController.selected.login}" title="#{bundle.EditUzytkownicyTitle_login}" required="true" requiredMessage="#{bundle.EditUzytkownicyRequiredMessage_login}"/>
+                    <h:outputLabel value="#{bundle.EditUzytkownicyLabel_imie}" for="imie" />
+                    <h:inputText id="imie" value="#{uzytkownicyController.selected.imie}" title="#{bundle.EditUzytkownicyTitle_imie}" required="true" requiredMessage="#{bundle.EditUzytkownicyRequiredMessage_imie}"/>
+                    <h:outputLabel value="#{bundle.EditUzytkownicyLabel_nazwisko}" for="nazwisko" />
+                    <h:inputText id="nazwisko" value="#{uzytkownicyController.selected.nazwisko}" title="#{bundle.EditUzytkownicyTitle_nazwisko}" required="true" requiredMessage="#{bundle.EditUzytkownicyRequiredMessage_nazwisko}"/>
+                    <h:outputLabel value="#{bundle.EditUzytkownicyLabel_haslo}" for="haslo" />
+                    <h:inputText id="haslo" value="#{uzytkownicyController.selected.haslo}" title="#{bundle.EditUzytkownicyTitle_haslo}" required="true" requiredMessage="#{bundle.EditUzytkownicyRequiredMessage_haslo}"/>
+                    <h:outputLabel value="#{bundle.EditUzytkownicyLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{uzytkownicyController.selected.email}" title="#{bundle.EditUzytkownicyTitle_email}" required="true" requiredMessage="#{bundle.EditUzytkownicyRequiredMessage_email}"/>
+                    <h:outputLabel value="#{bundle.EditUzytkownicyLabel_pesel}" for="pesel" />
+                    <h:inputText id="pesel" value="#{uzytkownicyController.selected.pesel}" title="#{bundle.EditUzytkownicyTitle_pesel}" required="true" requiredMessage="#{bundle.EditUzytkownicyRequiredMessage_pesel}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{uzytkownicyController.update}" value="#{bundle.EditUzytkownicySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="uzytkownicyView" value="#{bundle.EditUzytkownicyViewLink}"/>
+                <br />
+                <h:commandLink action="#{uzytkownicyController.prepareList}" value="#{bundle.EditUzytkownicyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+            </h:form>
+             
+            
+         </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+
+
+

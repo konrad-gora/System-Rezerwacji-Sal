@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    
+        
+       <h:body>
+       <ui:composition template="/szablon.xhtml">
+            
+            <ui:define name="content">
+                <c:if test="#{user.czyNieZalogowany()}">
+                    <meta content="0; URL=tylkoDlaZalogowanych.xhtml" http-equiv="refresh" />
+                </c:if>
+                
+             
+            <h1>Editing Uzytkownicy</h1>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRezerwacjaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{rezerwacjaController.selected.id}" title="#{bundle.EditRezerwacjaTitle_id}" required="true" requiredMessage="#{bundle.EditRezerwacjaRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditRezerwacjaLabel_dataod}" for="dataod" />
+                    <h:inputText id="dataod" value="#{rezerwacjaController.selected.dataod}" title="#{bundle.EditRezerwacjaTitle_dataod}" required="true" requiredMessage="#{bundle.EditRezerwacjaRequiredMessage_dataod}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRezerwacjaLabel_datado}" for="datado" />
+                    <h:inputText id="datado" value="#{rezerwacjaController.selected.datado}" title="#{bundle.EditRezerwacjaTitle_datado}" required="true" requiredMessage="#{bundle.EditRezerwacjaRequiredMessage_datado}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRezerwacjaLabel_idsali}" for="idsali" />
+                    <h:selectOneMenu id="idsali" value="#{rezerwacjaController.selected.idsali}" title="#{bundle.EditRezerwacjaTitle_idsali}" required="true" requiredMessage="#{bundle.EditRezerwacjaRequiredMessage_idsali}">
+                        <f:selectItems value="#{saleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRezerwacjaLabel_zarezerwowaneprzez}" for="zarezerwowaneprzez" />
+                    <h:selectOneMenu id="zarezerwowaneprzez" value="#{rezerwacjaController.selected.zarezerwowaneprzez}" title="#{bundle.EditRezerwacjaTitle_zarezerwowaneprzez}" required="true" requiredMessage="#{bundle.EditRezerwacjaRequiredMessage_zarezerwowaneprzez}">
+                        <f:selectItems value="#{uzytkownicyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{rezerwacjaController.update}" value="#{bundle.EditRezerwacjaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="rezerwacjaView" value="#{bundle.EditRezerwacjaViewLink}"/>
+                <br />
+                <h:commandLink action="#{rezerwacjaController.prepareList}" value="#{bundle.EditRezerwacjaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+               
+            </h:form>
+         </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+
+

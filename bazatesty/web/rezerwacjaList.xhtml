@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    
+        
+       <h:body>
+       <ui:composition template="/szablon.xhtml">
+            
+            <ui:define name="content">
+                <c:if test="#{user.czyNieZalogowany()}">
+                    <meta content="0; URL=tylkoDlaZalogowanych.xhtml" http-equiv="refresh" />
+                </c:if>
+                <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRezerwacjaEmpty}" rendered="#{rezerwacjaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{rezerwacjaController.items.rowCount > 0}">
+                    <h:outputText value="#{rezerwacjaController.pagination.pageFirstItem + 1}..#{rezerwacjaController.pagination.pageLastItem + 1}/#{rezerwacjaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{rezerwacjaController.previous}" value="#{bundle.Previous} #{rezerwacjaController.pagination.pageSize}" rendered="#{rezerwacjaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{rezerwacjaController.next}" value="#{bundle.Next} #{rezerwacjaController.pagination.pageSize}" rendered="#{rezerwacjaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{rezerwacjaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRezerwacjaTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRezerwacjaTitle_dataod}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataod}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRezerwacjaTitle_datado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datado}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRezerwacjaTitle_idsali}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idsali}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRezerwacjaTitle_zarezerwowaneprzez}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.zarezerwowaneprzez}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{rezerwacjaController.prepareView}" value="#{bundle.ListRezerwacjaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{rezerwacjaController.prepareEdit}" value="#{bundle.ListRezerwacjaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{rezerwacjaController.destroy}" value="#{bundle.ListRezerwacjaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{rezerwacjaController.prepareCreate}" value="#{bundle.ListRezerwacjaCreateLink}"/>
+                <br />
+                <br />
+            </h:form>
+             
+            
+         </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+
+
+

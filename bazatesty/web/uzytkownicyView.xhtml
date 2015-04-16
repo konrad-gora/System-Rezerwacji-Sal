@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    
+        
+       <h:body>
+       <ui:composition template="/szablon.xhtml">
+            
+            <ui:define name="content">
+                <c:if test="#{user.czyNieZalogowany()}">
+                    <meta content="0; URL=tylkoDlaZalogowanych.xhtml" http-equiv="refresh" />
+                </c:if>
+                
+             <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUzytkownicyLabel_id}"/>
+                    <h:outputText value="#{uzytkownicyController.selected.id}" title="#{bundle.ViewUzytkownicyTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewUzytkownicyLabel_login}"/>
+                    <h:outputText value="#{uzytkownicyController.selected.login}" title="#{bundle.ViewUzytkownicyTitle_login}"/>
+                    <h:outputText value="#{bundle.ViewUzytkownicyLabel_imie}"/>
+                    <h:outputText value="#{uzytkownicyController.selected.imie}" title="#{bundle.ViewUzytkownicyTitle_imie}"/>
+                    <h:outputText value="#{bundle.ViewUzytkownicyLabel_nazwisko}"/>
+                    <h:outputText value="#{uzytkownicyController.selected.nazwisko}" title="#{bundle.ViewUzytkownicyTitle_nazwisko}"/>
+                    <h:outputText value="#{bundle.ViewUzytkownicyLabel_haslo}"/>
+                    <h:outputText value="#{uzytkownicyController.selected.haslo}" title="#{bundle.ViewUzytkownicyTitle_haslo}"/>
+                    <h:outputText value="#{bundle.ViewUzytkownicyLabel_email}"/>
+                    <h:outputText value="#{uzytkownicyController.selected.email}" title="#{bundle.ViewUzytkownicyTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewUzytkownicyLabel_pesel}"/>
+                    <h:outputText value="#{uzytkownicyController.selected.pesel}" title="#{bundle.ViewUzytkownicyTitle_pesel}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{uzytkownicyController.destroyAndView}" value="#{bundle.ViewUzytkownicyDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="uzytkownicyEdit" value="#{bundle.ViewUzytkownicyEditLink}"/>
+                <br />
+                <h:commandLink action="#{uzytkownicyController.prepareCreate}" value="#{bundle.ViewUzytkownicyCreateLink}" />
+                <br />
+                <h:commandLink action="#{uzytkownicyController.prepareList}" value="#{bundle.ViewUzytkownicyShowAllLink}"/>
+                <br />
+                <br />
+
+            </h:form>
+            
+         </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+
+
+

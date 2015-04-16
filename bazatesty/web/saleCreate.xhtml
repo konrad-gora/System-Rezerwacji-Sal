@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition template="/szablon.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSaleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <c:if test="#{user.czyNieZalogowany()}">
+                    <meta content="0; URL=tylkoDlaZalogowanych.xhtml" http-equiv="refresh" />
+                </c:if>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSaleLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{saleController.selected.id}" title="#{bundle.CreateSaleTitle_id}" required="true" requiredMessage="#{bundle.CreateSaleRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateSaleLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{saleController.selected.nazwa}" title="#{bundle.CreateSaleTitle_nazwa}" required="true" requiredMessage="#{bundle.CreateSaleRequiredMessage_nazwa}"/>
+                    <h:outputLabel value="#{bundle.CreateSaleLabel_lokalizacja}" for="lokalizacja" />
+                    <h:inputText id="lokalizacja" value="#{saleController.selected.lokalizacja}" title="#{bundle.CreateSaleTitle_lokalizacja}" required="true" requiredMessage="#{bundle.CreateSaleRequiredMessage_lokalizacja}"/>
+                    <h:outputLabel value="#{bundle.CreateSaleLabel_numerSali}" for="numerSali" />
+                    <h:inputText id="numerSali" value="#{saleController.selected.numerSali}" title="#{bundle.CreateSaleTitle_numerSali}" required="true" requiredMessage="#{bundle.CreateSaleRequiredMessage_numerSali}"/>
+                    <h:outputLabel value="#{bundle.CreateSaleLabel_iloscMiejsc}" for="iloscMiejsc" />
+                    <h:inputText id="iloscMiejsc" value="#{saleController.selected.iloscMiejsc}" title="#{bundle.CreateSaleTitle_iloscMiejsc}" required="true" requiredMessage="#{bundle.CreateSaleRequiredMessage_iloscMiejsc}"/>
+                    <h:outputLabel value="#{bundle.CreateSaleLabel_typ}" for="typ" />
+                    <h:inputText id="typ" value="#{saleController.selected.typ}" title="#{bundle.CreateSaleTitle_typ}" required="true" requiredMessage="#{bundle.CreateSaleRequiredMessage_typ}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{saleController.create}" value="#{bundle.CreateSaleSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{saleController.prepareList}" value="#{bundle.CreateSaleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

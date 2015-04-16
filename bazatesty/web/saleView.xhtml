@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    
+        
+       <h:body>
+       <ui:composition template="/szablon.xhtml">
+            
+            <ui:define name="content">
+                <c:if test="#{user.czyNieZalogowany()}">
+                    <meta content="0; URL=tylkoDlaZalogowanych.xhtml" http-equiv="refresh" />
+                </c:if>
+                
+             
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSaleLabel_id}"/>
+                    <h:outputText value="#{saleController.selected.id}" title="#{bundle.ViewSaleTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewSaleLabel_nazwa}"/>
+                    <h:outputText value="#{saleController.selected.nazwa}" title="#{bundle.ViewSaleTitle_nazwa}"/>
+                    <h:outputText value="#{bundle.ViewSaleLabel_lokalizacja}"/>
+                    <h:outputText value="#{saleController.selected.lokalizacja}" title="#{bundle.ViewSaleTitle_lokalizacja}"/>
+                    <h:outputText value="#{bundle.ViewSaleLabel_numerSali}"/>
+                    <h:outputText value="#{saleController.selected.numerSali}" title="#{bundle.ViewSaleTitle_numerSali}"/>
+                    <h:outputText value="#{bundle.ViewSaleLabel_iloscMiejsc}"/>
+                    <h:outputText value="#{saleController.selected.iloscMiejsc}" title="#{bundle.ViewSaleTitle_iloscMiejsc}"/>
+                    <h:outputText value="#{bundle.ViewSaleLabel_typ}"/>
+                    <h:outputText value="#{saleController.selected.typ}" title="#{bundle.ViewSaleTitle_typ}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{saleController.destroyAndView}" value="#{bundle.ViewSaleDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="saleEdit" value="#{bundle.ViewSaleEditLink}"/>
+                <br />
+                <h:commandLink action="#{saleController.prepareCreate}" value="#{bundle.ViewSaleCreateLink}" />
+                <br />
+                <h:commandLink action="#{saleController.prepareList}" value="#{bundle.ViewSaleShowAllLink}"/>
+                <br />
+                <br />
+
+            </h:form>
+         </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+
+
+
