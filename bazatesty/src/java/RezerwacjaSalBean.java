@@ -2,6 +2,8 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.enterprise.context.Dependent;
+import javax.inject.Named;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,7 +14,9 @@ import java.util.List;
  *
  * @author Mariusz
  */
-public class rezerwacjaSalBean {
+@Named(value = "rezerwacjaSalBean")
+@Dependent
+public class RezerwacjaSalBean {
 
     /**
      * Creates a new instance of rezerwacjaSalBean
@@ -20,7 +24,7 @@ public class rezerwacjaSalBean {
     public DB dbConnection = new DB();
     private List<Sala> listaSal = new ArrayList<>();
     
-    public rezerwacjaSalBean() {
+    public RezerwacjaSalBean() {
     }
 
     public String getWszystkieSaleForUser(Integer userId){
