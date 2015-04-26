@@ -1,5 +1,6 @@
 package org.primefaces.showcase.view.input;
  
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.faces.application.FacesMessage;
@@ -22,9 +23,11 @@ public class CalendarView {
         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
     }
      
-    public void click() {
+    public void click() throws SQLException {
         RequestContext requestContext = RequestContext.getCurrentInstance();
-         
+        DB dbConnection = new DB();
+        dbConnection.createConnection();
+        dbConnection.exectueQuery("insert into REZERWACJA (IDSALI, DATAOD, DATADO, ZAREZERWOWANEPRZEZ) values (1, '2015-04-25 21:56:15.776', '2015-04-25 21:56:15.776', 1)");
         requestContext.update("form:display");
         requestContext.execute("PF('dlg').show()");
     }

@@ -43,8 +43,6 @@ public class RezerwacjaSalBean {
     }
     
     public String personalizacjaRezerwacjiSali(Sala sala){
-        
-        
         return "rezerwacjaSalPersonalizacja.xhtml";
     }
 }
