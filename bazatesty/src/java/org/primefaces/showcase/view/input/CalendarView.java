@@ -27,7 +27,17 @@ public class CalendarView {
         RequestContext requestContext = RequestContext.getCurrentInstance();
         DB dbConnection = new DB();
         dbConnection.createConnection();
-        dbConnection.exectueQuery("insert into REZERWACJA (IDSALI, DATAOD, DATADO, ZAREZERWOWANEPRZEZ) values (1, '2015-04-25 21:56:15.776', '2015-04-25 21:56:15.776', 1)");
+        java.sql.Date sqlDateStart = new java.sql.Date(dateStart.getTime());
+        java.sql.Time sqlTimeStart = new java.sql.Time(dateStart.getTime());
+        java.sql.Date sqlDateEnd = new java.sql.Date(dateEnd.getTime());
+        java.sql.Time sqlTimeEnd = new java.sql.Time(dateEnd.getTime());
+        System.out.println("gowno: " + sqlDateStart + sqlTimeStart);
+        String insertDoBazy = "insert into REZERWACJA (IDSALI, DATAOD, DATADO, ZAREZERWOWANEPRZEZ) values (1, "+
+                "'" + sqlDateStart + " " +sqlTimeStart + "'," +
+                "'" + sqlDateEnd + " " +sqlTimeEnd + "'," + 
+                "1)";
+        System.out.println("blabla: " + insertDoBazy);
+        dbConnection.exectueQuery(insertDoBazy);
         requestContext.update("form:display");
         requestContext.execute("PF('dlg').show()");
     }
