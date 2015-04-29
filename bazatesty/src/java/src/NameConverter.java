@@ -1,3 +1,5 @@
+package src;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,8 +18,8 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter("surnameConv")
-public class SurnameConverter implements Converter {
+@FacesConverter("nameConv")
+public class NameConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component,
@@ -34,17 +36,17 @@ public class SurnameConverter implements Converter {
         if (!name.matches(urlRegex)) {
 
             FacesMessage msg
-                    = new FacesMessage("Nazwisko zawiera niepozadane znaki",
-                            "Invalid surname.");
+                    = new FacesMessage("Imie zawiera niepozadane znaki",
+                            "Invalid name.");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ConverterException(msg);
         }
 
         //URLObject urlobj = new URLObject(url.toString());
-        UserBean user = new UserBean(name, false);
+        UserBean user = new UserBean(name , true);
         
         //return urlobj;
-        return user.getNazwisko();
+        return user.getImie();
     }
 
     @Override

@@ -144,4 +144,23 @@ public class DB {
         stmt.close();
         conn.close();
     }
+    
+    public Integer getUserId(String login){
+        try {
+            takeDriver();
+            connect();
+            String query = "select id from uzytkownicy where login = " + "'" + login + "'";
+            PreparedStatement preparedStatement = 
+                    conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            Integer idUzytkownika = null;
+            while (result.next()) {
+                idUzytkownika = result.getInt("id");
+            }
+            return idUzytkownika;
+        } catch (SQLException sqlExcept) {
+            return 0;
+        }
+     
+    }
 }
