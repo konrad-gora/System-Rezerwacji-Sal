@@ -40,21 +40,16 @@ public class CalendarView {
         java.sql.Date sqlDateStart = new java.sql.Date(dateStart.getTime());
         java.sql.Time sqlTimeStart = new java.sql.Time(dateStart.getTime());
         java.sql.Date sqlDateEnd = new java.sql.Date(dateEnd.getTime());
-        java.sql.Time sqlTimeEnd = new java.sql.Time(dateEnd.getTime());
-        
-        System.out.println("gowno: " + sqlDateStart + sqlTimeStart);
+        java.sql.Time sqlTimeEnd = new java.sql.Time(dateEnd.getTime());       
         String insertDoBazy = "insert into REZERWACJA (IDSALI, DATAOD, DATADO, ZAREZERWOWANEPRZEZ) values (1, "+
                 "'" + sqlDateStart + " " +sqlTimeStart + "'," +
                 "'" + sqlDateEnd + " " +sqlTimeEnd + "'," + 
                 userId + ")";
-        System.out.println("blabla: " + insertDoBazy);
         dbConnection.exectueQuery(insertDoBazy);
         requestContext.update("form:display");
         requestContext.execute("PF('dlg').show()");
     }
- 
-    
- 
+
     public Date getDateStart() {
         return dateStart;
     }

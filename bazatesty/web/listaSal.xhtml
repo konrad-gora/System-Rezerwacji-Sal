@@ -21,7 +21,7 @@
                    
                 <br/>
                 <h:form>
-                    <h:dataTable value="#{rezerwacjaSalBean.wszystkieSale}"
+                    <h:dataTable value="#{rezerwacjaSalBean.zarezerwowaneSaleUzytkownika}"
                      var ="item"
                      headerClass="order-table-header"
                      rowClasses="order-table-   odd-row,order-table-even-row">
@@ -58,6 +58,20 @@
                             Ilość miejsc
                         </f:facet>
                             #{item.ilosc_miejsc}
+                    </h:column>   
+                        
+                    <h:column>
+                        <f:facet name="header">
+                            Rezerwacja od
+                        </f:facet>
+                            #{item.dataOd}
+                    </h:column>   
+                        
+                    <h:column>
+                        <f:facet name="header">
+                            Rezerwacja do
+                        </f:facet>
+                            #{item.dataDo}
                     </h:column>   
            
             </h:dataTable>

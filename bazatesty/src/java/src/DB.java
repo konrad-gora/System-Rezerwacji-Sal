@@ -103,6 +103,36 @@ public class DB {
 
         return sale;
     }
+    
+    public List<SalaIRezerwacja> listaSalUzytkownikaZalgowanego(Integer idUzytkownika) throws SQLException {
+
+        takeDriver();
+        connect();
+        String query = "select * from sale s " +
+            "join REZERWACJA r on r.IDSALI = s.ID " +
+            "where r.ZAREZERWOWANEPRZEZ = " + idUzytkownika;
+        System.out.println("aaaaaaaaaaaaa: " + query);
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        ResultSet result = preparedStatement.executeQuery();
+        List<SalaIRezerwacja> sale = new ArrayList<SalaIRezerwacja>();
+
+        while (result.next()) {
+            SalaIRezerwacja sala = new SalaIRezerwacja();
+
+            sala.setId(result.getInt("id"));
+            sala.setIlosc_miejsc(result.getInt("ilosc_miejsc"));
+            sala.setLokalizacja(result.getString("lokalizacja"));
+            sala.setNazwa(result.getString("nazwa"));
+            sala.setNumer_sali(result.getInt("numer_sali"));
+            sala.setTyp(result.getString("typ"));
+            sala.setDataOd(result.getString("dataOd"));
+            sala.setDataDo(result.getString("dataDo"));
+
+            sale.add(sala);
+        }
+
+        return sale;
+    }
 
     public void exectueQuery(String sql) throws SQLException {
         takeDriver();
@@ -143,5 +173,24 @@ public class DB {
     private void close() throws SQLException {
         stmt.close();
         conn.close();
+    }
+    
+    public Integer getUserId(String login){
+        try {
+            takeDriver();
+            connect();
+            String query = "select id from uzytkownicy where login = " + "'" + login + "'";
+            PreparedStatement preparedStatement = 
+                    conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            Integer idUzytkownika = null;
+            while (result.next()) {
+                idUzytkownika = result.getInt("id");
+            }
+            return idUzytkownika;
+        } catch (SQLException sqlExcept) {
+            return 0;
+        }
+     
     }
 }
