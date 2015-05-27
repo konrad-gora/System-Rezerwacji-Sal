@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSaleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSaleLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{saleController.selected.id}" title="#{bundle.EditSaleTitle_id}" required="true" requiredMessage="#{bundle.EditSaleRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditSaleLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{saleController.selected.nazwa}" title="#{bundle.EditSaleTitle_nazwa}" required="true" requiredMessage="#{bundle.EditSaleRequiredMessage_nazwa}"/>
+                    <h:outputLabel value="#{bundle.EditSaleLabel_lokalizacja}" for="lokalizacja" />
+                    <h:inputText id="lokalizacja" value="#{saleController.selected.lokalizacja}" title="#{bundle.EditSaleTitle_lokalizacja}" required="true" requiredMessage="#{bundle.EditSaleRequiredMessage_lokalizacja}"/>
+                    <h:outputLabel value="#{bundle.EditSaleLabel_numerSali}" for="numerSali" />
+                    <h:inputText id="numerSali" value="#{saleController.selected.numerSali}" title="#{bundle.EditSaleTitle_numerSali}" required="true" requiredMessage="#{bundle.EditSaleRequiredMessage_numerSali}"/>
+                    <h:outputLabel value="#{bundle.EditSaleLabel_iloscMiejsc}" for="iloscMiejsc" />
+                    <h:inputText id="iloscMiejsc" value="#{saleController.selected.iloscMiejsc}" title="#{bundle.EditSaleTitle_iloscMiejsc}" required="true" requiredMessage="#{bundle.EditSaleRequiredMessage_iloscMiejsc}"/>
+                    <h:outputLabel value="#{bundle.EditSaleLabel_typ}" for="typ" />
+                    <h:inputText id="typ" value="#{saleController.selected.typ}" title="#{bundle.EditSaleTitle_typ}" required="true" requiredMessage="#{bundle.EditSaleRequiredMessage_typ}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{saleController.update}" value="#{bundle.EditSaleSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSaleViewLink}"/>
+                <br />
+                <h:commandLink action="#{saleController.prepareList}" value="#{bundle.EditSaleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSaleIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

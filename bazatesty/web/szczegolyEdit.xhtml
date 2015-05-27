@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSzczegolysaliTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSzczegolysaliLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{szczegolysaliController.selected.id}" title="#{bundle.EditSzczegolysaliTitle_id}" required="true" requiredMessage="#{bundle.EditSzczegolysaliRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditSzczegolysaliLabel_opis}" for="opis" />
+                    <h:inputText id="opis" value="#{szczegolysaliController.selected.opis}" title="#{bundle.EditSzczegolysaliTitle_opis}" required="true" requiredMessage="#{bundle.EditSzczegolysaliRequiredMessage_opis}"/>
+                    <h:outputLabel value="#{bundle.EditSzczegolysaliLabel_zdjecie}" for="zdjecie" />
+                    <h:inputTextarea rows="4" cols="30" id="zdjecie" value="#{szczegolysaliController.selected.zdjecie}" title="#{bundle.EditSzczegolysaliTitle_zdjecie}" />
+                    <h:outputLabel value="#{bundle.EditSzczegolysaliLabel_idsali}" for="idsali" />
+                    <h:selectOneMenu id="idsali" value="#{szczegolysaliController.selected.idsali}" title="#{bundle.EditSzczegolysaliTitle_idsali}" required="true" requiredMessage="#{bundle.EditSzczegolysaliRequiredMessage_idsali}">
+                        <f:selectItems value="#{saleController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{szczegolysaliController.update}" value="#{bundle.EditSzczegolysaliSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="szczegolysaliView" value="#{bundle.EditSzczegolysaliViewLink}"/>
+                <br />
+                <h:commandLink action="#{szczegolysaliController.prepareList}" value="#{bundle.EditSzczegolysaliShowAllLink}" immediate="true"/>
+                <br />
+                
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
