@@ -39,6 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Sale.findByIloscMiejsc", query = "SELECT s FROM Sale s WHERE s.iloscMiejsc = :iloscMiejsc"),
     @NamedQuery(name = "Sale.findByTyp", query = "SELECT s FROM Sale s WHERE s.typ = :typ")})
 public class Sale implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsali")
+    private Collection<Szczegolysali> szczegolysaliCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -168,6 +170,15 @@ public class Sale implements Serializable {
     @Override
     public String toString() {
         return "panelAdmina.Sale[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Szczegolysali> getSzczegolysaliCollection() {
+        return szczegolysaliCollection;
+    }
+
+    public void setSzczegolysaliCollection(Collection<Szczegolysali> szczegolysaliCollection) {
+        this.szczegolysaliCollection = szczegolysaliCollection;
     }
     
 }

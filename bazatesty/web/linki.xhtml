@@ -17,12 +17,14 @@
                 <div class="option"><h:link value="Zaloguj" outcome="Zaloguj.xhtml" ></h:link></div>
 
                 <div class="option"><h:link value="Zarejestruj" outcome="Rejestracja.xhtml" ></h:link></div>
+                
+                <div class="option"><h:link value="Terminarz" outcome="kalendarz.xhtml" ></h:link></div>
 
             </c:if>
             <c:if test="#{user.czyZalogowany}">
                 <div class="option"><h:link value="Wyloguj" outcome="wyloguj.xhtml" ></h:link></div>
 
-                <div class="option"><h:link value="Lista sal" outcome="listaSal.xhtml"></h:link></div>
+                <div class="option"><h:link value="Twoje rezerwacje" outcome="listaSal.xhtml"></h:link></div>
 
                 <c:if test="#{user.czyAdmin()}">
                     <div class="option"><h:link value="Panel Admina" outcome="panelAdmina.xhtml"></h:link></div>
