@@ -45,9 +45,8 @@ public class Szczegolysali implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "OPIS")
     private String opis;
-    @Lob
-    @Column(name = "ZDJECIE")
-    private Serializable zdjecie;
+   
+   
     @JoinColumn(name = "IDSALI", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Sale idsali;
@@ -80,14 +79,7 @@ public class Szczegolysali implements Serializable {
         this.opis = opis;
     }
 
-    public Serializable getZdjecie() {
-        return zdjecie;
-    }
-
-    public void setZdjecie(Serializable zdjecie) {
-        this.zdjecie = zdjecie;
-    }
-
+   
     public Sale getIdsali() {
         return idsali;
     }

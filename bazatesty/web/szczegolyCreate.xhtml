@@ -19,8 +19,7 @@
                     <h:inputText id="id" value="#{szczegolysaliController.selected.id}" title="#{bundle.CreateSzczegolysaliTitle_id}" required="true" requiredMessage="#{bundle.CreateSzczegolysaliRequiredMessage_id}"/>
                     <h:outputLabel value="#{bundle.CreateSzczegolysaliLabel_opis}" for="opis" />
                     <h:inputText id="opis" value="#{szczegolysaliController.selected.opis}" title="#{bundle.CreateSzczegolysaliTitle_opis}" required="true" requiredMessage="#{bundle.CreateSzczegolysaliRequiredMessage_opis}"/>
-                    <h:outputLabel value="#{bundle.CreateSzczegolysaliLabel_zdjecie}" for="zdjecie" />
-                    <h:inputTextarea rows="4" cols="30" id="zdjecie" value="#{szczegolysaliController.selected.zdjecie}" title="#{bundle.CreateSzczegolysaliTitle_zdjecie}" />
+                   
                     <h:outputLabel value="#{bundle.CreateSzczegolysaliLabel_idsali}" for="idsali" />
                     <h:selectOneMenu id="idsali" value="#{szczegolysaliController.selected.idsali}" title="#{bundle.CreateSzczegolysaliTitle_idsali}" required="true" requiredMessage="#{bundle.CreateSzczegolysaliRequiredMessage_idsali}">
                         <f:selectItems value="#{saleController.itemsAvailableSelectOne}"/>
