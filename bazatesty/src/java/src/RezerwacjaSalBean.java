@@ -5,22 +5,16 @@ import com.google.common.collect.Lists;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.inject.Named;
+import javax.faces.bean.SessionScoped;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Mariusz
  */
-@Named(value = "rezerwacjaSalBean")
-@ManagedBean
+@ManagedBean(name = "rezerwacjaSalBean")
+@SessionScoped
 public class RezerwacjaSalBean {
 
     /**
@@ -28,6 +22,7 @@ public class RezerwacjaSalBean {
      */
     public DB dbConnection = new DB();
     private List<Sala> listaSal = new ArrayList<>();
+    public Integer akutalneIdSali;
     
     @ManagedProperty(value = "#{user}")
     private UserBean userBean;
@@ -39,6 +34,14 @@ public class RezerwacjaSalBean {
     public RezerwacjaSalBean() {
     }
 
+    public Integer getAkutalneIdSali() {
+        return akutalneIdSali;
+    }
+
+    public void setAkutalneIdSali(Integer akutalneIdSali) {
+        this.akutalneIdSali = akutalneIdSali;
+    }
+    
     public String getWszystkieSaleForUser(Integer userId){
         return null;
     }
@@ -58,13 +61,8 @@ public class RezerwacjaSalBean {
         return salaIRezerwacja;
     }
     
-    public void przypiszSaleDoUzytkownika(Sala sala) throws SQLException{
-        //TODO zamiast 2 brac id uzytkownika zalogowanego
-        String sql = "insert into rezerwacje values (2, " + sala.getId() + ")";
-        dbConnection.exectueQuery(sql);
-    }
-    
     public String personalizacjaRezerwacjiSali(Sala sala){
+        akutalneIdSali = sala.getId();
         return "rezerwacjaSalPersonalizacja.xhtml";
     }
 }

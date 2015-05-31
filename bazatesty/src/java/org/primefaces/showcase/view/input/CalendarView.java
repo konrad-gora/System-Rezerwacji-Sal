@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
  
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
+import src.RezerwacjaSalBean;
  
 @ManagedBean
 public class CalendarView {
@@ -19,9 +20,15 @@ public class CalendarView {
     private Date dateEnd;
     @ManagedProperty(value = "#{user}")
     private UserBean userBean;
+    @ManagedProperty(value = "#{rezerwacjaSalBean}")
+    private RezerwacjaSalBean rezerwacjaSalBean;
     
     public void setUserBean(UserBean userBean){
         this.userBean = userBean;
+    }
+
+    public void setRezerwacjaSalBean(RezerwacjaSalBean rezerwacjaSalBean) {
+        this.rezerwacjaSalBean = rezerwacjaSalBean;
     }
      
     public void onDateSelect(SelectEvent event) {
@@ -41,7 +48,8 @@ public class CalendarView {
         java.sql.Time sqlTimeStart = new java.sql.Time(dateStart.getTime());
         java.sql.Date sqlDateEnd = new java.sql.Date(dateEnd.getTime());
         java.sql.Time sqlTimeEnd = new java.sql.Time(dateEnd.getTime());       
-        String insertDoBazy = "insert into REZERWACJA (IDSALI, DATAOD, DATADO, ZAREZERWOWANEPRZEZ) values (1, "+
+        String insertDoBazy = "insert into REZERWACJA (IDSALI, DATAOD, DATADO, ZAREZERWOWANEPRZEZ) "
+                + "values ("+rezerwacjaSalBean.getAkutalneIdSali()+", "+
                 "'" + sqlDateStart + " " +sqlTimeStart + "'," +
                 "'" + sqlDateEnd + " " +sqlTimeEnd + "'," + 
                 userId + ")";
