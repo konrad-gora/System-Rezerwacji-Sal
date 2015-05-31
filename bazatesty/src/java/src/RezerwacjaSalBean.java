@@ -54,9 +54,7 @@ public class RezerwacjaSalBean {
     public List<SalaIRezerwacja> getZarezerwowaneSaleUzytkownika() throws SQLException{     
         List<SalaIRezerwacja> salaIRezerwacja = Lists.newArrayList();
         
-        System.out.println("aaaaaaaaaa");
         Integer idUzytkownika = dbConnection.getUserId(userBean.getLogin());
-        System.out.println("bbbbbbb");
         salaIRezerwacja = dbConnection.listaSalUzytkownikaZalgowanego(idUzytkownika);
         return salaIRezerwacja;
     }

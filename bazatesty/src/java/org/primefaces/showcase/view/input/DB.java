@@ -1,6 +1,7 @@
 package org.primefaces.showcase.view.input;
 
 
+import com.google.common.collect.Lists;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +11,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import panelAdmina.Rezerwacja;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -103,6 +105,29 @@ public class DB {
 
         return sale;
     }
+    
+        public List<Rezerwacja> saleRezerwacje(Integer idSali) throws SQLException {
+
+        takeDriver();
+        connect();
+        String query = "select dataod, datado from REZERWACJA where idsali = "+
+                idSali;
+        List<Rezerwacja> rezerwacje = Lists.newArrayList();
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        ResultSet result = preparedStatement.executeQuery();
+
+        while (result.next()) {
+            Rezerwacja rezerwacja = new Rezerwacja();
+
+            rezerwacja.setDatado(result.getDate("datado"));
+            rezerwacja.setDataod(result.getDate("dataod"));
+
+            rezerwacje.add(rezerwacja);
+        }
+
+        return rezerwacje;
+    }
+
 
     public void exectueQuery(String sql) throws SQLException {
         takeDriver();
