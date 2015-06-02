@@ -127,6 +127,8 @@ public class DB {
 
         return rezerwacje;
     }
+        
+        
 
 
     public void exectueQuery(String sql) throws SQLException {

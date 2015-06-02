@@ -63,4 +63,9 @@ public class RezerwacjaSalBean {
         akutalneIdSali = sala.getId();
         return "rezerwacjaSalPersonalizacja.xhtml";
     }
+    
+     public String x(){ // przejscie na strone gdy rtermin jest zajety
+        
+        return "terminZajety.xhtml";
+     }
 }
